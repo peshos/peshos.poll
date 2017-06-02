@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created:cb85b80c-f585-40ff-8bfc-12ff4d0e34a9-->
+<App xmlns="http://schemas.microsoft.com/sharepoint/2012/app/manifest"
+     Name="peshosPoll"
+     ProductID="{36e85495-ea2c-44ca-914c-b15db2fe6ddf}"
+     Version="1.1.0.0"
+     SharePointMinVersion="15.0.0.0"
+>
+  <Properties>
+    <Title>peshos poll</Title>
+    <StartPage>~appWebUrl/pages/peshos.poll.landing.html?{StandardTokens}</StartPage>
+    <SupportedLocales>
+      <SupportedLocale CultureName="en-us" />
+    </SupportedLocales>
+  </Properties>
+
+  <AppPrincipal>
+    <Internal />
+  </AppPrincipal>
+
+
+</App>

@@ -1,0 +1,433 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{627CDD36-4399-493C-9BDE-F0D726BB7326}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PeshOS.Poll</RootNamespace>
+    <AssemblyName>PeshOS.Poll</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetOfficeVersion>15.0</TargetOfficeVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <IncludeAssemblyInPackage>False</IncludeAssemblyInPackage>
+    <ProjectMode>SharePointApp</ProjectMode>
+    <AppFeaturePartId>{42759be6-f8a0-4d0a-a2db-1bf5b7d448f4}</AppFeaturePartId>
+    <WspPartId>{726b9011-96d3-473d-89ed-c93f7235293e}</WspPartId>
+    <WorkflowPartId>{dc1b5f93-23bb-4fe1-8510-8f411786c511}</WorkflowPartId>
+    <CspkgPartId>{3a6b0670-0665-4e16-8900-906f3515fe01}</CspkgPartId>
+    <SqlPackagePartId>{59ef12bf-2aba-4b66-ad42-e97f858ed343}</SqlPackagePartId>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="components\Breadcrumb\Breadcrumb.html" />
+    <Content Include="components\Breadcrumb\Breadcrumb.js" />
+    <Content Include="components\Button\Button.Command.html" />
+    <Content Include="components\Button\Button.Compound.html" />
+    <Content Include="components\Button\Button.Hero.html" />
+    <Content Include="components\Button\Button.html" />
+    <Content Include="components\Button\Button.Primary.html" />
+    <Content Include="components\Callout\Callout.ActionText.html" />
+    <Content Include="components\Callout\Callout.Close.html" />
+    <Content Include="components\Callout\Callout.html" />
+    <Content Include="components\Callout\Callout.Oobe.html" />
+    <Content Include="components\Callout\Callout.Peek.html" />
+    <Content Include="components\ChoiceField\ChoiceField.Checkbox.Disabled.html" />
+    <Content Include="components\ChoiceField\ChoiceField.Checkbox.html" />
+    <Content Include="components\ChoiceField\ChoiceField.Checkbox.Selected.html" />
+    <Content Include="components\ChoiceField\ChoiceField.ChoiceFieldGroup.html" />
+    <Content Include="components\ChoiceField\ChoiceField.Disabled.html" />
+    <Content Include="components\ChoiceField\ChoiceField.html" />
+    <Content Include="components\ChoiceField\ChoiceField.Selected.html" />
+    <Content Include="components\CommandBar\CommandBar.html" />
+    <Content Include="components\CommandBar\Jquery.CommandBar.js" />
+    <Content Include="components\ContextualMenu\ContextualMenu.Dividers.html" />
+    <Content Include="components\ContextualMenu\ContextualMenu.html" />
+    <Content Include="components\ContextualMenu\ContextualMenu.Multiselect.html" />
+    <Content Include="components\ContextualMenu\ContextualMenu.SubMenu.html" />
+    <Content Include="components\ContextualMenu\Jquery.ContextualMenu.js" />
+    <Content Include="components\DatePicker\DatePicker.html" />
+    <Content Include="components\DatePicker\Jquery.DatePicker.js" />
+    <Content Include="components\DatePicker\PickaDate.js" />
+    <Content Include="components\Dialog\Dialog.Close.html" />
+    <Content Include="components\Dialog\Dialog.html" />
+    <Content Include="components\Dialog\Dialog.LgHeader.html" />
+    <Content Include="components\Dialog\Dialog.Multiline.html" />
+    <Content Include="components\Dropdown\Dropdown.Disabled.html" />
+    <Content Include="components\Dropdown\Dropdown.html" />
+    <Content Include="components\Dropdown\Jquery.Dropdown.js" />
+    <Content Include="components\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="components\Label\Label.Disabled.html" />
+    <Content Include="components\Label\Label.html" />
+    <Content Include="components\Label\Label.Required.html" />
+    <Content Include="components\Link\Link.Hero.html" />
+    <Content Include="components\Link\Link.html" />
+    <Content Include="components\ListItem\Jquery.ListItem.js" />
+    <Content Include="components\ListItem\ListItem.Document.html" />
+    <Content Include="components\ListItem\ListItem.html" />
+    <Content Include="components\ListItem\ListItem.Image.html" />
+    <Content Include="components\ListItem\ListItem.Selectable.html" />
+    <Content Include="components\ListItem\ListItem.Selected.html" />
+    <Content Include="components\ListItem\ListItem.Unread.html" />
+    <Content Include="components\ListItem\ListItem.Unseen.html" />
+    <Content Include="components\List\List.Grid.html" />
+    <Content Include="components\List\List.html" />
+    <Content Include="components\MessageBanner\MessageBanner.html" />
+    <Content Include="components\MessageBanner\MessageBanner.js" />
+    <Content Include="components\NavBar\Jquery.NavBar.js" />
+    <Content Include="components\NavBar\NavBar.html" />
+    <Content Include="components\OrgChart\OrgChart.html" />
+    <Content Include="components\OrgChart\OrgChart.Square.html" />
+    <Content Include="components\Overlay\Overlay.Dark.html" />
+    <Content Include="components\Overlay\Overlay.html" />
+    <Content Include="components\Overlay\Overlay.None.html" />
+    <Content Include="components\Panel\Jquery.Panel.js" />
+    <Content Include="components\Panel\Panel.ExtraLarge.html" />
+    <Content Include="components\Panel\Panel.html" />
+    <Content Include="components\Panel\Panel.Large.html" />
+    <Content Include="components\Panel\Panel.Medium.html" />
+    <Content Include="components\PeoplePicker\Jquery.PeoplePicker.js" />
+    <Content Include="components\PeoplePicker\PeoplePicker.Compact.html" />
+    <Content Include="components\PeoplePicker\PeoplePicker.Disconnected.html" />
+    <Content Include="components\PeoplePicker\PeoplePicker.FacePile.html" />
+    <Content Include="components\PeoplePicker\PeoplePicker.html" />
+    <Content Include="components\PeoplePicker\PeoplePicker.Searching.png" />
+    <Content Include="components\PersonaCard\Jquery.PersonaCard.js" />
+    <Content Include="components\PersonaCard\PersonaCard.html" />
+    <Content Include="components\PersonaCard\PersonaCard.Square.html" />
+    <Content Include="components\Persona\Persona.ExtraLarge.html" />
+    <Content Include="components\Persona\Persona.ExtraSmall.html" />
+    <Content Include="components\Persona\Persona.html" />
+    <Content Include="components\Persona\Persona.Large.html" />
+    <Content Include="components\Persona\Persona.Person.jpg" />
+    <Content Include="components\Persona\Persona.Person2.png" />
+    <Content Include="components\Persona\Persona.Presence.Available.html" />
+    <Content Include="components\Persona\Persona.Presence.Away.html" />
+    <Content Include="components\Persona\Persona.Presence.Blocked.html" />
+    <Content Include="components\Persona\Persona.Presence.Busy.html" />
+    <Content Include="components\Persona\Persona.Presence.Dnd.html" />
+    <Content Include="components\Persona\Persona.Presence.Offline.html" />
+    <Content Include="components\Persona\Persona.Presence.Square.Available.html" />
+    <Content Include="components\Persona\Persona.Presence.Square.Away.html" />
+    <Content Include="components\Persona\Persona.Presence.Square.Blocked.html" />
+    <Content Include="components\Persona\Persona.Presence.Square.Busy.html" />
+    <Content Include="components\Persona\Persona.Presence.Square.Dnd.html" />
+    <Content Include="components\Persona\Persona.Presence.Square.Offline.html" />
+    <Content Include="components\Persona\Persona.Small.html" />
+    <Content Include="components\Persona\Persona.Square.ExtraLarge.html" />
+    <Content Include="components\Persona\Persona.Square.ExtraSmall.html" />
+    <Content Include="components\Persona\Persona.Square.html" />
+    <Content Include="components\Persona\Persona.Square.Large.html" />
+    <Content Include="components\Persona\Persona.Square.Small.html" />
+    <Content Include="components\Persona\Persona.Square.Tiny.html" />
+    <Content Include="components\Persona\Persona.Tiny.html" />
+    <Content Include="components\Pivot\jquery.Pivot.js" />
+    <Content Include="components\Pivot\Pivot.html" />
+    <Content Include="components\Pivot\Pivot.Large.html" />
+    <Content Include="components\Pivot\Pivot.Tabs.html" />
+    <Content Include="components\Pivot\Pivot.Tabs.Large.html" />
+    <Content Include="components\ProgressIndicator\ProgressIndicator.html" />
+    <Content Include="components\ProgressIndicator\ProgressIndicator.js" />
+    <Content Include="components\SearchBox\Jquery.SearchBox.js" />
+    <Content Include="components\SearchBox\SearchBox.html" />
+    <Content Include="components\Spinner\Spinner.html" />
+    <Content Include="components\Spinner\Spinner.js" />
+    <Content Include="components\Spinner\Spinner.Large.html" />
+    <Content Include="components\Spinner\Spinner.Message.html" />
+    <Content Include="components\Spinner\Spinner.Message.Large.html" />
+    <Content Include="components\Table\Table.html" />
+    <Content Include="components\TextField\Jquery.TextField.js" />
+    <Content Include="components\TextField\TextField.html" />
+    <Content Include="components\TextField\TextField.Multiline.html" />
+    <Content Include="components\TextField\TextField.Placeholder.html" />
+    <Content Include="components\TextField\TextField.Underlined.html" />
+    <Content Include="components\Toggle\Toggle.html" />
+    <Content Include="components\Toggle\Toggle.TextLeft.html" />
+    <Content Include="css\Elements.xml" />
+    <Content Include="css\fabric.components.css" />
+    <Content Include="css\fabric.components.min.css" />
+    <Content Include="css\fabric.components.rtl.css" />
+    <Content Include="css\fabric.components.rtl.min.css" />
+    <Content Include="css\fabric.css" />
+    <Content Include="css\fabric.min.css" />
+    <Content Include="css\fabric.rtl.css" />
+    <Content Include="css\fabric.rtl.min.css" />
+    <Content Include="css\peshos.css" />
+    <Content Include="Elements.xml" />
+    <Content Include="images\Elements.xml" />
+    <Content Include="images\peshos_poll_large.png">
+      <OpcRelationship>manifest-icon</OpcRelationship>
+    </Content>
+    <Content Include="less\Elements.xml" />
+    <Content Include="Lists\PollConfiguration\Elements.xml" />
+    <Content Include="Lists\PollConfiguration\PollConfigurationInstance\Elements.xml" />
+    <Content Include="Lists\PollConfiguration\Schema.xml" />
+    <Content Include="Lists\PollExports\EditDlg.htm" />
+    <Content Include="Lists\PollExports\Elements.xml" />
+    <Content Include="Lists\PollExports\FileDlg.htm" />
+    <Content Include="Lists\PollExports\PollExportsInstance\Elements.xml" />
+    <Content Include="Lists\PollExports\Repair.aspx" />
+    <Content Include="Lists\PollExports\Schema.xml" />
+    <Content Include="Lists\PollExports\Upload.aspx" />
+    <Content Include="Lists\PollVotes\Elements.xml" />
+    <Content Include="Lists\PollVotes\PollVotesInstance\Elements.xml" />
+    <Content Include="Lists\PollVotes\Schema.xml" />
+    <Content Include="pages\peshos.poll.edit.html" />
+    <Content Include="pages\peshos.poll.landing.html" />
+    <Content Include="pages\polls.html" />
+    <Content Include="sass\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="scripts\camljs.js" />
+    <Content Include="scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="scripts\jquery-2.2.0.js" />
+    <Content Include="scripts\jquery-2.2.0.min.js" />
+    <Content Include="scripts\jquery.fabric.js" />
+    <Content Include="scripts\jquery.fabric.min.js" />
+    <Content Include="scripts\knockout-3.4.0.debug.js" />
+    <Content Include="scripts\knockout-3.4.0.js" />
+    <Content Include="scripts\moment-with-locales.js" />
+    <Content Include="scripts\moment-with-locales.min.js" />
+    <Content Include="scripts\moment.js" />
+    <Content Include="scripts\moment.min.js" />
+    <Content Include="scripts\peshos.fabricui.js" />
+    <Content Include="scripts\peshos.knockout.js" />
+    <Content Include="scripts\peshos.poll.common.js" />
+    <Content Include="scripts\peshos.poll.configuration.js" />
+    <Content Include="scripts\peshos.poll.constants.js" />
+    <Content Include="scripts\peshos.poll.designer.js" />
+    <Content Include="scripts\peshos.poll.edit.js" />
+    <Content Include="scripts\peshos.poll.landing.js" />
+    <Content Include="scripts\peshos.poll.runtime.js" />
+    <Content Include="scripts\peshos.poll.sp.js" />
+    <Content Include="css\jquery.colpick.css" />
+    <Content Include="css\jquery.jqplot.css" />
+    <None Include="ClientWebPart\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{61cd4b82-a1f2-43ca-839e-b497bc73dde0}</SharePointProjectItemId>
+    </None>
+    <None Include="components\Breadcrumb\Breadcrumb.json" />
+    <None Include="components\Breadcrumb\Breadcrumb.less" />
+    <None Include="components\Button\Button.json" />
+    <None Include="components\Button\Button.less" />
+    <None Include="components\Callout\Callout.json" />
+    <None Include="components\Callout\Callout.less" />
+    <None Include="components\ChoiceField\ChoiceField.json" />
+    <None Include="components\ChoiceField\ChoiceField.less" />
+    <None Include="components\CommandBar\CommandBar.json" />
+    <None Include="components\CommandBar\CommandBar.less" />
+    <None Include="components\ContextualMenu\ContextualMenu.json" />
+    <None Include="components\ContextualMenu\ContextualMenu.less" />
+    <None Include="components\DatePicker\DatePicker.json" />
+    <None Include="components\DatePicker\DatePicker.less" />
+    <None Include="components\Dialog\Dialog.json" />
+    <None Include="components\Dialog\Dialog.less" />
+    <None Include="components\Dropdown\Dropdown.json" />
+    <None Include="components\Dropdown\Dropdown.less" />
+    <None Include="components\Label\Label.json" />
+    <None Include="components\Label\Label.less" />
+    <None Include="components\Link\Link.json" />
+    <None Include="components\Link\Link.less" />
+    <None Include="components\ListItem\ListItem.json" />
+    <None Include="components\ListItem\ListItem.less" />
+    <None Include="components\List\List.json" />
+    <None Include="components\List\List.less" />
+    <None Include="components\MessageBanner\MessageBanner.json" />
+    <None Include="components\MessageBanner\MessageBanner.less" />
+    <None Include="components\NavBar\NavBar.json" />
+    <None Include="components\NavBar\NavBar.less" />
+    <None Include="components\OrgChart\OrgChart.json" />
+    <None Include="components\OrgChart\OrgChart.less" />
+    <None Include="components\Overlay\Overlay.json" />
+    <None Include="components\Overlay\Overlay.less" />
+    <None Include="components\Panel\Panel.json" />
+    <None Include="components\Panel\Panel.less" />
+    <None Include="components\PeoplePicker\PeoplePicker.json" />
+    <None Include="components\PeoplePicker\PeoplePicker.less" />
+    <None Include="components\PersonaCard\PersonaCard.json" />
+    <None Include="components\PersonaCard\PersonaCard.less" />
+    <None Include="components\Persona\Persona.json" />
+    <None Include="components\Persona\Persona.less" />
+    <None Include="components\Pivot\Pivot.json" />
+    <None Include="components\Pivot\Pivot.less" />
+    <None Include="components\ProgressIndicator\ProgressIndicator.json" />
+    <None Include="components\ProgressIndicator\ProgressIndicator.less" />
+    <None Include="components\SearchBox\SearchBox.json" />
+    <None Include="components\SearchBox\SearchBox.less" />
+    <None Include="components\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{f85fb98c-db96-4c56-8551-bd5ebd6aa585}</SharePointProjectItemId>
+    </None>
+    <None Include="components\Spinner\Spinner.json" />
+    <None Include="components\Spinner\Spinner.less" />
+    <None Include="components\Table\Table.json" />
+    <None Include="components\Table\Table.less" />
+    <None Include="components\TextField\TextField.json" />
+    <None Include="components\TextField\TextField.less" />
+    <None Include="components\Toggle\Toggle.json" />
+    <None Include="components\Toggle\Toggle.less" />
+    <None Include="css\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{81e76f01-0328-4a46-a873-4e0b7f9e3049}</SharePointProjectItemId>
+    </None>
+    <None Include="images\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{e2ba255c-1f6a-4fc7-a6dc-288bfd4f3a6e}</SharePointProjectItemId>
+    </None>
+    <None Include="less\Fabric.Components.less" />
+    <None Include="less\Fabric.less" />
+    <None Include="less\Fabric.RTL.less" />
+    <None Include="less\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{fca004fc-465c-44ab-a41c-31d08ae2e18e}</SharePointProjectItemId>
+    </None>
+    <None Include="less\_Fabric.Animations.less" />
+    <None Include="less\_Fabric.Animations.RTL.less" />
+    <None Include="less\_Fabric.Color.Mixins.less" />
+    <None Include="less\_Fabric.Color.Variables.less" />
+    <None Include="less\_Fabric.Grid.less" />
+    <None Include="less\_Fabric.Icons.Font.less" />
+    <None Include="less\_Fabric.Icons.Font.MDL2.less" />
+    <None Include="less\_Fabric.Icons.less" />
+    <None Include="less\_Fabric.Icons.MDL2.less" />
+    <None Include="less\_Fabric.Icons.RTL.less" />
+    <None Include="less\_Fabric.Icons.RTL.MDL2.less" />
+    <None Include="less\_Fabric.Mixins.less" />
+    <None Include="less\_Fabric.Responsive.Utilities.less" />
+    <None Include="less\_Fabric.Responsive.Variables.less" />
+    <None Include="less\_Fabric.Typography.Fonts.less" />
+    <None Include="less\_Fabric.Typography.Languageoverrides.less" />
+    <None Include="less\_Fabric.Typography.less" />
+    <None Include="less\_Fabric.Typography.Variables.less" />
+    <None Include="less\_Fabric.Utilities.less" />
+    <None Include="less\_Fabric.ZIndex.Variables.less" />
+    <None Include="less\_Office.Color.Mixins.less" />
+    <None Include="less\_Office.Color.Variables.less" />
+    <None Include="Lists\PollConfiguration\PollConfigurationInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{aa098cdd-5a25-40a0-a2ae-64c9b6299346}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\PollConfiguration\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{acdfd22a-a765-4f90-a29c-bbfe9aa6c598}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\PollExports\PollExportsInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{e1a26b5e-7185-4735-a47e-2db7c76efd9f}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\PollExports\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{1219d237-1f14-43fe-8f1f-0a5dde0161a5}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\PollVotes\PollVotesInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{de61a12d-faf6-4408-a049-053b40a4348f}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\PollVotes\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{f69cfb69-f311-420a-93ec-3fa7311c5648}</SharePointProjectItemId>
+    </None>
+    <None Include="packages.config" />
+    <None Include="pages\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{36e85495-ea2c-44ca-914c-b15db2fe6ddf}</SharePointProjectItemId>
+    </None>
+    <Content Include="ClientWebPart\Elements.xml">
+      <OpcRelationship>feature-elementmanifest</OpcRelationship>
+    </Content>
+    <Content Include="pages\peshos.poll.html" />
+    <Content Include="pages\Elements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sass\Fabric.Animations.Output.scss" />
+    <None Include="sass\Fabric.Animations.RTL.Output.scss" />
+    <None Include="sass\Fabric.Color.Mixins.Output.scss" />
+    <None Include="sass\Fabric.Grid.Output.scss" />
+    <None Include="sass\Fabric.Icons.Font.MDL2.Output.scss" />
+    <None Include="sass\Fabric.Icons.Font.Output.scss" />
+    <None Include="sass\Fabric.Icons.MDL2.Output.scss" />
+    <None Include="sass\Fabric.Icons.Output.scss" />
+    <None Include="sass\Fabric.Icons.RTL.MDL2.Output.scss" />
+    <None Include="sass\Fabric.Icons.RTL.Output.scss" />
+    <None Include="sass\Fabric.Responsive.Utilities.Output.scss" />
+    <None Include="sass\Fabric.RTL.scss" />
+    <None Include="sass\Fabric.scss" />
+    <None Include="sass\Fabric.Typography.Fonts.Output.scss" />
+    <None Include="sass\Fabric.Typography.Language.Overrides.Output.scss" />
+    <None Include="sass\Fabric.Typography.Output.scss" />
+    <None Include="sass\Fabric.Utilities.Output.scss" />
+    <None Include="sass\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{aadf1fdc-6d5c-46af-9fac-333350af33ed}</SharePointProjectItemId>
+    </None>
+    <None Include="sass\_Fabric.Animations.RTL.scss" />
+    <None Include="sass\_Fabric.Animations.scss" />
+    <None Include="sass\_Fabric.Color.Mixins.scss" />
+    <None Include="sass\_Fabric.Color.Variables.scss" />
+    <None Include="sass\_Fabric.Common.scss" />
+    <None Include="sass\_Fabric.Grid.scss" />
+    <None Include="sass\_Fabric.Icons.scss" />
+    <None Include="sass\_Fabric.Mixins.scss" />
+    <None Include="sass\_Fabric.Responsive.Variables.scss" />
+    <None Include="sass\_Fabric.Typography.Fonts.scss" />
+    <None Include="sass\_Fabric.Typography.Language.Overrides.scss" />
+    <None Include="sass\_Fabric.Typography.scss" />
+    <None Include="sass\_Fabric.Typography.Variables.scss" />
+    <None Include="sass\_Fabric.Utilities.scss" />
+    <None Include="sass\_Fabric.ZIndex.Variables.scss" />
+    <None Include="sass\_Office.Color.Variables.scss" />
+    <None Include="scripts\jquery-2.2.0.min.map" />
+    <None Include="scripts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{59ef12bf-2aba-4b66-ad42-e97f858ed343}</SharePointProjectItemId>
+    </None>
+    <Content Include="scripts\Elements.xml" />
+    <Content Include="scripts\jquery.colpick.js" />
+    <Content Include="scripts\jquery.jqplot.min.js" />
+    <Content Include="scripts\peshos.common.js" />
+    <Content Include="scripts\peshos.poll.resources.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{89d3fbe4-7510-4fb3-97f5-a54d61a36d43}</SharePointProjectItemId>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Package\Package.package">
+      <PackageId>{66bd0400-d166-43a8-99ce-a9d46b39ad9d}</PackageId>
+    </None>
+    <None Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </None>
+    <None Include="Features\PeshOS.Poll\PeshOS.Poll.feature">
+      <FeatureId>{89836f36-72ea-4af4-9b3f-8550a00d5875}</FeatureId>
+    </None>
+    <None Include="Features\PeshOS.Poll\PeshOS.Poll.Template.xml">
+      <DependentUpon>PeshOS.Poll.feature</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <AppManifestFile Include="AppManifest.xml">
+      <SubType>Designer</SubType>
+    </AppManifestFile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0'">11.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+</Project>
