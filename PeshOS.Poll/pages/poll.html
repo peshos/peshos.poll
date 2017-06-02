@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="/_layouts/15/MicrosoftAjax.js"></script>
+    <script type="text/javascript" src="/_layouts/15/sp.runtime.js"></script>
+    <script type="text/javascript" src="/_layouts/15/sp.js"></script>
+    <script type="text/javascript" src="/_layouts/15/sp.ui.controls.js"></script>
+
+    <script type="text/javascript" src="../scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../scripts/angular.min.js"></script>
+    <script type="text/javascript" src="../scripts/angular-resource.min.js"></script>
+    <script type="text/javascript" src="../scripts/angular-route.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.fabric.min.js"></script>
+    <script type="text/javascript" src="../scripts/camljs.js"></script>
+
+    <script type="text/javascript" src="../scripts/peshos.common.js"></script>
+    <script type="text/javascript" src="../scripts/services/ConstantService.js"></script>
+    <script type="text/javascript" src="../scripts/services/TranslationService.js"></script>
+    <script type="text/javascript" src="../scripts/services/SharePointService.js"></script>
+    <script type="text/javascript" src="../scripts/controllers/PollListController.js"></script>
+    <script type="text/javascript" src="../scripts/app_config.js"></script>
+
+    <!--<script type="text/javascript" src="../scripts/peshos.poll.landing.js"></script>
+    <script type="text/javascript" src="../scripts/peshos.poll.constants.js"></script>    
+    <script type="text/javascript" src="../scripts/peshos.poll.sp.js"></script>-->
+
+    <link href="../css/fabric.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/fabric.components.min.css" rel="stylesheet" type="text/css" />
+
+    <script>
+        $(document).ready(function () {
+            
+            //PeshOS.Poll.SP.addChromeControl();            
+            //PeshOS.Poll.Landing.configure();
+        });
+    </script>
+</head>
+<body>
+
+<div ng-app="pollAppConfig" ng-controller="PollListController">
+    <button class="ms-Button ms-Button--hero" ng-click="addPoll($event)" ng-disabled="disableAdd">
+        <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span>
+        <span class="ms-Button-label">{{STRINGS.NewPoll}}</span>
+    </button>
+
+    <button class="ms-Button ms-Button--hero" ng-click="viewExported($event)">
+        <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--documents"></i></span>
+        <span class="ms-Button-label">{{STRINGS.ViewExports}}</span>
+    </button>
+
+    <div class="ms-Table">
+        <div class="ms-Table-row">
+            <span class="ms-Table-cell">{{STRINGS.Id}}</span>
+            <span class="ms-Table-cell">{{STRINGS.Name}}</span>
+            <span class="ms-Table-cell">{{STRINGS.ActiveFrom}}</span>
+            <span class="ms-Table-cell">{{STRINGS.ActiveTo}}</span>
+            <span class="ms-Table-cell"></span>
+        </div>
+
+        <div class="ms-Table-row" ng-repeat="poll in polls">
+            <span class="ms-Table-cell">{{poll.Id}}</span>
+            <span class="ms-Table-cell"><a href="#" data="{{poll.Id}}" ng-click="configure($event)">{{poll.Name}}</a></span>
+            <span class="ms-Table-cell">{{poll.ActiveFrom}}</span>
+            <span class="ms-Table-cell">{{poll.ActiveTo}}</span>
+            <span class="ms-Table-cell"></span>
+        </div>
+    </div>
+</div>
+
+        <div class="overlay" id="overlay"></div>
+        <div id="chromeControl"></div>
+        <div>
+            <div class="alert alert-danger fade in" role="alert" style="display:none;" id="alertReadingConfigurations">
+                <button type="button" class="close" data-hide="alert"><span aria-hidden="true">×</span></button>
+                <strong localeid="Alert_Reading"></strong>&nbsp;<span localeid="Alert_ReadingConfigurations"></span>
+            </div>
+            <div class="alert alert-warning fade in" role="alert" style="display:none;" id="alertItemsDeleted">
+                <button type="button" class="close" data-hide="alert"><span aria-hidden="true">×</span></button>
+                <strong localeid="Alert_Deleted"></strong>&nbsp;<span localeid="Alert_PollRemoved"></span>
+            </div>
+            <div class="alert alert-danger fade in" role="alert" style="display:none;" id="alertSPError">
+                <button type="button" class="close" data-hide="alert"><span aria-hidden="true">×</span></button>
+                <strong localeid="Alert_Error"></strong>&nbsp;<span id="spError"></span>
+            </div>
+            <div class="alert alert-success fade in" role="alert" style="display:none;" id="alertExportedFile">
+                <button type="button" class="close" data-hide="alert"><span aria-hidden="true">×</span></button>
+                <strong localeid="Alert_FileExported"></strong>&nbsp;<span localeid="Alert_FileExportedMessage"></span><a id="exportedFile" title="Exported votes"></a>
+            </div>
+            <div class="panel panel-default" id="pollLanding" style="display:none;">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary btn-lg" type="button" data-bind='click: $root.addPoll, visible: $root.canAddPoll'><span class="glyphicon glyphicon-ok"></span>&nbsp;<span localeid="Landing_NewPoll"></span></button>
+                            <button class="btn btn-primary btn-lg" type="button" data-bind='click: $root.viewExported'><span class="glyphicon glyphicon-th-list"></span>&nbsp;<span localeid="Landing_ViewExports"></span></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table">
+                                <caption><h2 localeid="Landing_Polls" style="float:left;"></h2></caption>
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th><span localeid="Landing_PollName"></span></th>
+                                        <th><span localeid="Landing_PollStart"></span></th>
+                                        <th><span localeid="Landing_PollEnd"></span></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="foreach: polls">
+                                    <tr>
+                                        <td>
+                                            <span data-bind="text: id, visible: !$root.isItemEditing($data)"></span>
+                                        </td>
+                                        <td>
+                                            <span data-bind="text: pollname, visible: !$root.isItemEditing($data)"></span>
+                                            <input type="text" class="form-control" data-bind="value: pollname.editValue, visible: $root.isItemEditing($data)" />
+                                        </td>
+                                        <td>
+                                            <span data-bind="text: start, visible: !$root.isItemEditing($data)"></span>
+                                            <input type="text" class="form-control" data-date-format="DD MMM YYYY" data-bind="visible: $root.isItemEditing($data), value: start.editValue, attr: {id: startId }" />
+                                        </td>
+                                        <td>
+                                            <span data-bind="text: end, visible: !$root.isItemEditing($data)"></span>
+                                            <input type="text" class="form-control" data-date-format="DD MMM YYYY" data-bind="visible: $root.isItemEditing($data), value: end.editValue, attr: {id: endId }" />
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-info" type="button" data-bind="click: $root.editPoll.bind($root), visible: !$root.isItemEditing($data)"><span localeid="Buttons_Edit"></span></button>
+                                            <button class="btn btn-info" type="button" data-bind="click: $root.configurePoll.bind($root), visible: !$root.isItemEditing($data) && $root.isItemSaved($data)"><span localeid="Buttons_Configure"></span></button>
+                                            <button class="btn btn-info" type="button" data-bind="click: $root.exportPollData.bind($root), visible: !$root.isItemEditing($data) && $root.isItemSaved($data)"><span localeid="Buttons_Export"></span></button>
+                                            <button class="btn btn-info" type="button" data-bind="click: $root.removePoll.bind($root), visible: !$root.isItemEditing($data)"><span localeid="Buttons_Delete"></span></button>
+                                            <button class="btn btn-info" type="button" data-bind="click: $root.applyPoll.bind($root), visible: $root.isItemEditing($data)"><span localeid="Buttons_Apply"></span></button>
+                                            <button class="btn btn-info" type="button" data-bind="click: $root.cancelEdit.bind($root), visible: $root.isItemEditing($data)"><span localeid="Buttons_Cancel"></span></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

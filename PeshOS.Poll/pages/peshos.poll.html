@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="/_layouts/15/MicrosoftAjax.js"></script>
+    <script type="text/javascript" src="/_layouts/15/sp.runtime.js"></script>
+    <script type="text/javascript" src="/_layouts/15/sp.js"></script>
+    <script type="text/javascript" src="../scripts/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="../scripts/excanvas.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.jqplot.min.js"></script>
+    <script type="text/javascript" src="../scripts/knockout-3.4.0.js"></script>
+    <script type="text/javascript" src="../scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="../scripts/camljs.js"></script>
+
+    <script type="text/javascript" src="../scripts/peshos.common.js"></script>
+    <script type="text/javascript" src="../scripts/peshos.poll.constants.js"></script>
+    <script type="text/javascript" src="../scripts/peshos.poll.resources.js"></script>
+    <script type="text/javascript" src="../scripts/peshos.poll.common.js"></script>
+    <script type="text/javascript" src="../scripts/peshos.poll.runtime.js"></script>
+    <script type="text/javascript" src="../scripts/peshos.poll.common.js"></script>
+    <script type="text/javascript" src="../scripts/peshos.poll.sp.js"></script>
+
+    <link href="../css/jquery.jqplot.css" rel="stylesheet" type="text/css" />    
+
+    <script>
+        $(document).ready(function () {
+            PeshOS.Poll.Resources.translatePage();
+            PeshOS.Poll.SP.getActivePollId().then(function (itemId) {
+                PeshOS.Poll.SP.readConfiguration(itemId).then(function () {                    
+                PeshOS.Poll.Common.updateChartRenderers();
+                PeshOS.Poll.Runtime.configure();
+                },
+                function (errorMessage) {
+                });
+            },
+            function (errorMessage) {
+            });
+            
+        });
+    </script>
+</head>
+<body>
+    <div id="peshosPoll" class="peshosPoll">
+        <div class="panel panel-default" style="border:none;">
+            <div class="panel-body">
+                <div class="alert alert-danger fade in" role="alert" style="display:none;" id="alertError">
+                    <strong localeid="Alert_Error"></strong>&nbsp;<span localeid="Alert_UnexpectedError"></span>
+                </div>
+                <div class="row" id="peshosPollBody" data-bind="visible: showQuestions()">
+                    <div class="col-md-12">
+                        <p>
+                            <div>
+                                <h3 data-bind="text: name"></h3>
+                            </div>
+                        </p>
+                        <p>
+                            <div>
+                                <h5 data-bind="text: description"></h5>                                
+                            </div>
+                        </p>
+                        <p>
+                            <div data-bind="template: { name: 'questionsTemplate', foreach: questions }">
+                            </div>
+                            <script type="text/html" id="questionsTemplate">
+                                <div>
+                                    <input type="radio" name="pollQuestions" data-bind="value: $data.chartText, attr: { 'answerText': $data.answerText }, checked: $parent.disableVote " />
+                                    &nbsp;
+                                    <span data-bind="text: $data.answerText"></span>
+                                </div>
+                            </script>
+                        </p>
+                        <p>
+                            <div>
+                                <button class="btn btn-info" type="button" style="display:none;" data-bind="click: vote, visible: canVote, attr: { 'disabled': !disableVote() }"><span data-bind="text: votebutton"></span></button>
+                                <button class="btn btn-info" type="button" style="display:none;" data-bind="click: results, visible: canSeeResults"><span data-bind="text: resultsbutton"></span></button>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+                <div class="row" data-bind="visible: showChart()">
+                    <div class="col-md-12" style="padding-left:0px;">                        
+                        <div class="alert alert-warning fade in" role="alert" style="display:none;" id="alertNoData">
+                            <strong localeid="Alert_NoData"></strong><span localeid="Alert_NoDataMessage"></span>
+                        </div>
+                        <p>
+                            <div id="peshosChart" class="pollChart"></div>
+                        </p>                        
+                        <p>
+                            <button class="btn btn-info" type="button" style="display:none; margin-bottom: -10px; margin-left: 10px;" data-bind="click: backToVote, visible: canVote"><span data-bind="text: votebutton"></span></button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

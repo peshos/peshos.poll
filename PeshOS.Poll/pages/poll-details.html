@@ -1,0 +1,464 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="/_layouts/15/MicrosoftAjax.js"></script>
+    <script type="text/javascript" src="/_layouts/15/sp.runtime.js"></script>
+    <script type="text/javascript" src="/_layouts/15/sp.js"></script>
+    <script type="text/javascript" src="/_layouts/15/sp.ui.controls.js"></script>
+    <script type="text/javascript" src="../scripts/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.colpick.js"></script>
+    <script type="text/javascript" src="../scripts/excanvas.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.jqplot.min.js"></script>
+    <script type="text/javascript" src="../scripts/knockout-3.4.0.js"></script>
+    <script type="text/javascript" src="../scripts/bootstrap.js"></script>
+
+    <script type="text/javascript" src="../scripts/peshos.common.js"></script>
+    <script type="text/javascript" src="../scripts/peshos.poll.constants.js"></script>
+    <script type="text/javascript" src="../scripts/peshos.poll.resources.js"></script>
+    <script type="text/javascript" src="../scripts/peshos.poll.configuration.js"></script>
+    <script type="text/javascript" src="../scripts/peshos.poll.designer.js"></script>
+    <script type="text/javascript" src="../scripts/peshos.poll.common.js"></script>
+    <script type="text/javascript" src="../scripts/peshos.poll.edit.js"></script>
+    <script type="text/javascript" src="../scripts/peshos.poll.sp.js"></script>
+
+    <link href="../css/jquery.colpick.css" rel="stylesheet" type="text/css" />
+    <link href="../css/jquery.jqplot.css" rel="stylesheet" type="text/css" />    
+
+    <script>
+        $(document).ready(function () {
+            PeshOS.Poll.Resources.translatePage();
+            PeshOS.Poll.SP.addChromeControl();
+            PeshOS.Poll.SP.readConfiguration(PeshOS.Common.queryString('pollId')).then(function () {
+                PeshOS.Poll.Common.updateChartRenderers();
+                PeshOS.Poll.Edit.configure();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="chromeControl"></div>
+    <div id="pollEdit">
+        <div id="pollTopMenu" class="btn-group btn-group-justified">
+            <div class="btn-group">
+                <button type="button" data-bind='click: helpInfo' class="btn btn-default"><span localeid="Buttons_Help"></span></button>
+            </div>
+            <div class="btn-group">
+                <button type="button" data-bind='click: design' class="btn btn-default"><span localeid="Buttons_Design"></span></button>
+            </div>
+            <div class="btn-group">
+                <button type="button" data-bind='click: configuration' class="btn btn-default"><span localeid="Buttons_Configuration"></span></button>
+            </div>
+            <div class="btn-group">
+                <button type="button" data-bind='click: previewSave' class="btn btn-default"><span localeid="Buttons_PreviewSave"></span></button>
+            </div>
+        </div>
+        <div id="pollHelp">
+            <div class="panel">
+                <div class="row" style="margin-left:0px; margin-right:0px;">
+                    <div class="col-md-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title" localeid="Help_Validation"></h3>
+                            </div>
+                            <div class="panel-body" localeid="Help_ValidationMessage">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-left:0px; margin-right:0px;">
+                    <div class="col-md-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title" localeid="Help_Design"></h3>
+                            </div>
+                            <div class="panel-body" localeid="Help_DesignMessage">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-left:0px; margin-right:0px;">
+                    <div class="col-md-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title" localeid="Help_Configuration"></h3>
+                            </div>
+                            <div class="panel-body" localeid="Help_ConfigurationMessage">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-left:0px; margin-right:0px;">
+                    <div class="col-md-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title" localeid="Help_About"></h3>
+                            </div>
+                            <div class="panel-body" localeid="Help_AboutMessage" localehtml="true">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="pollDesign" style="display:none;">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="pollChart" class="pollChart"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h4 localeid="Chart_Type"></h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <input type="radio" name="chartType" value="pie" data-bind="checked: chartType" />
+                                        </span>
+                                        <span class="form-control" localeid="Chart_Pie"></span>
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <input type="radio" name="chartType" value="funnel" data-bind="checked: chartType" />
+                                        </span>
+                                        <span class="form-control" localeid="Chart_Funnel"></span>
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <input type="radio" name="chartType" value="barHorizontal" data-bind="checked: chartType" />
+                                        </span>
+                                        <span class="form-control" localeid="Chart_HorizontalBar"></span>
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <input type="radio" name="chartType" value="barVertical" data-bind="checked: chartType" />
+                                        </span>
+                                        <span class="form-control" localeid="Chart_VerticalBar"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" data-bind="visible: isBar()">
+                                <div class="col-md-2">
+                                    <h4 localeid="Chart_ShowGridLines"></h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>
+                                        <div style="width: 36px;">
+                                            <input type="checkbox" class="form-control" data-bind="checked: gridLines">
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row" data-bind="visible: isBar()">
+                                <div class="col-md-2">
+                                    <h4 localeid="Chart_FormatString"></h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>
+                                        <div style="width: 160px;">
+                                            <input type="text" class="form-control" data-bind="value: formatString">
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row" data-bind="visible: isBar()">
+                                <div class="col-md-2">
+                                    <h4 localeid="Chart_MaxValue"></h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>
+                                        <div style="width: 80px;">
+                                            <input type="text" class="form-control" data-bind="value: maxValue">
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row" data-bind="visible: isPie()">
+                                <div class="col-md-2">
+                                    <h4 localeid="Chart_Fill"></h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>
+                                        <div style="width: 36px;">
+                                            <input type="checkbox" class="form-control" data-bind="checked: fill">
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row" data-bind="visible: isPie()">
+                                <div class="col-md-2">
+                                    <h4 localeid="Chart_Legend"></h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>
+                                        <div>
+                                            <select class="form-control" data-bind="options: ['--', 'e', 'w', 's', 'n'], value: legend"></select>
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h4 localeid="Chart_Colors"></h4>
+                                </div>
+                                <div class="col-md-1">
+                                    <p>
+                                        <div>
+                                            01.&nbsp;<div class="colorButton" id="pcb_1">&nbsp;</div>
+                                        </div>
+                                    </p>
+                                </div>
+                                <div class="col-md-1">
+                                    <p>
+                                        <div>
+                                            04.&nbsp;<div class="colorButton" id="pcb_4">&nbsp;</div>
+                                        </div>
+                                    </p>
+                                </div>
+                                <div class="col-md-1">
+                                    <p>
+                                        <div>
+                                            07.&nbsp;<div class="colorButton" id="pcb_7">&nbsp;</div>
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                </div>
+                                <div class="col-md-1">
+                                    <p>
+                                        <div>
+                                            02.&nbsp;<div class="colorButton" id="pcb_2">&nbsp;</div>
+                                        </div>
+                                    </p>
+                                </div>
+                                <div class="col-md-1">
+                                    <p>
+                                        <div>
+                                            05.&nbsp;<div class="colorButton" id="pcb_5">&nbsp;</div>
+                                        </div>
+                                    </p>
+                                </div>
+                                <div class="col-md-1">
+                                    <p>
+                                        <div>
+                                            08.&nbsp;<div class="colorButton" id="pcb_8">&nbsp;</div>
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                </div>
+                                <div class="col-md-1">
+                                    <p>
+                                        <div>
+                                            03.&nbsp;<div class="colorButton" id="pcb_3">&nbsp;</div>
+                                        </div>
+                                    </p>
+                                </div>
+                                <div class="col-md-1">
+                                    <p>
+                                        <div>
+                                            06.&nbsp;<div class="colorButton" id="pcb_6">&nbsp;</div>
+                                        </div>
+                                    </p>
+                                </div>
+                                <div class="col-md-1">
+                                    <p>
+                                        <div>
+                                            09.&nbsp;<div class="colorButton" id="pcb_9">&nbsp;</div>
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="pollConfiguration" style="display:none;">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 localeid="Config_PollName"></h4>
+                            <p>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" data-bind="value: name">
+                                </div>
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 localeid="Config_PollDescription"></h4>
+                            <p>
+                                <div class="form-group">
+                                    <textarea rows="4" cols="50" data-bind="value: description" class="form-control"></textarea>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 localeid="Config_Width"></h4>
+                            <p>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" data-bind="value: width">
+                                </div>
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 localeid="Config_Height"></h4>
+                            <p>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" data-bind="value: height">
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 localeid="Config_VoteButton"></h4>
+                            <p>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" data-bind="value: votebutton">
+                                </div>
+                            </p>
+                        </div>
+                        <div class="col-md-2">
+                            <h4 localeid="Config_VoteOnce"></h4>
+                            <p>
+                                <div style="width:36px;">
+                                    <input type="checkbox" class="form-control" data-bind="checked: voteonce">
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 localeid="Config_ResultsButton"></h4>
+                            <p>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" data-bind="value: resultsbutton">
+                                </div>
+                            </p>
+                        </div>
+                        <div class="col-md-2">
+                            <h4 localeid="Config_DisableVoting"></h4>
+                            <p>
+                                <div style="width:36px;">
+                                    <input type="checkbox" class="form-control" data-bind="checked: disablevoting">
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 localeid="Config_Questions"></h4>
+                            <p>
+                                <div class="form-group">
+                                    <table class="table table-hover">
+                                        <tr>
+                                            <th>
+                                                <h5 localeid="Config_AnswerText"></h5>
+                                            </th>
+                                            <th>
+                                                <h5 localeid="Config_ChartText"></h5>
+                                            </th>
+                                            <th>
+                                                <h4></h4>
+                                            </th>
+                                        </tr>
+                                        <tbody data-bind="foreach: questions">
+                                            <tr>
+                                                <td><input class="form-control" data-bind='value: answerText' /></td>
+                                                <td><input class="form-control" data-bind='value: chartText' /></td>
+                                                <td><button class="btn btn-info" type="button" data-bind='click: $root.removeQuestion'><span localeid="Config_Delete"></span></button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <p>
+                                <button class="btn btn-info" type="button" data-bind='click: $root.addQuestion'><span localeid="Config_AddQuestion"></span></button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="pollPreviewSave" style="display:none;">
+            <div class="alert alert-success fade in" role="alert" style="display:none;" id="alertSaved">
+                <button type="button" class="close" data-hide="alert"><span aria-hidden="true">×</span></button>
+                <strong localeid="Alert_Saved"></strong>&nbsp;<span localeid="Alert_ConfigurationSaved"></span>
+            </div>
+            <div class="alert alert-warning fade in" role="alert" style="display:none;" id="alertItemsDeleted">
+                <button type="button" class="close" data-hide="alert"><span aria-hidden="true">×</span></button>
+                <strong localeid="Alert_Deleted"></strong>&nbsp;<span id="alertTotalItems"></span><span localeid="Alert_ItemsDeleted"></span>
+            </div>
+            <div class="alert alert-danger fade in" role="alert" style="display:none;" id="alertError">
+                <strong localeid="Alert_Error"></strong>&nbsp;<span localeid="Alert_UnexpectedError"></span>
+            </div>            
+            <div class="panel panel-default" id="pollPreviewButtons">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-success" data-bind="click: save"><span localeid="Buttons_Save"></span></button>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-warning" data-bind="click: close"><span localeid="Buttons_Close"></span></button>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-danger" data-bind="click: reset"><span localeid="Buttons_Reset"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6" id="pollPollPreview">
+                            <h2 localeid="Preview_Poll"></h2>
+                            <p>
+                                <div>
+                                    <h3 data-bind="text: name"></h3>
+                                </div>
+                            </p>
+                            <p>
+                                <div>
+                                    <h5 data-bind="text: description"></h5>
+                                </div>
+                            </p>
+                            <p>
+                                <div data-bind="template: { name: 'questionsTemplate', foreach: questions }">
+                                </div>
+                                <script type="text/html" id="questionsTemplate">
+                                    <div>
+                                        <input type="radio" name="pollQuestions" data-bind="value: $data.chartText, attr: { 'answerText': $data.answerText } " />
+                                        &nbsp;
+                                        <span data-bind="text: $data.answerText"></span>
+                                    </div>
+                                </script>
+                            </p>
+                            <p>
+                                <div>
+                                    <button class="btn btn-info" type="button"><span data-bind="text: votebutton"></span></button>
+                                    <button class="btn btn-info" type="button"><span data-bind="text: resultsbutton"></span></button>
+                                </div>
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <h2 localeid="Preview_Chart"></h2>
+                            <p>
+                                <div id="pollChartPreview" class="pollChart"></div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

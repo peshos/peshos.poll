@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="Scripts">
+    <File Path="scripts\jquery.colpick.js" Url="scripts/jquery.colpick.js" ReplaceContent="TRUE" />
+    <File Path="scripts\jquery.jqplot.min.js" Url="scripts/jquery.jqplot.min.js" ReplaceContent="TRUE" />
+    <File Path="scripts\peshos.common.js" Url="scripts/peshos.common.js" ReplaceContent="TRUE" />
+    <File Path="scripts\peshos.poll.resources.js" Url="scripts/peshos.poll.resources.js" ReplaceContent="TRUE" />
+    <File Path="scripts\peshos.poll.configuration.js" Url="scripts/peshos.poll.configuration.js" ReplaceContent="TRUE" />
+    <File Path="scripts\peshos.poll.constants.js" Url="scripts/peshos.poll.constants.js" ReplaceContent="TRUE" />
+    <File Path="scripts\peshos.poll.designer.js" Url="scripts/peshos.poll.designer.js" ReplaceContent="TRUE" />
+    <File Path="scripts\peshos.poll.edit.js" Url="scripts/peshos.poll.edit.js" ReplaceContent="TRUE" />
+    <File Path="scripts\peshos.poll.runtime.js" Url="scripts/peshos.poll.runtime.js" ReplaceContent="TRUE" />
+    <File Path="scripts\peshos.poll.sp.js" Url="scripts/peshos.poll.sp.js" ReplaceContent="TRUE" />
+    <File Path="scripts\peshos.poll.common.js" Url="scripts/peshos.poll.common.js" ReplaceContent="TRUE" />    
+    <File Path="scripts\peshos.poll.landing.js" Url="scripts/peshos.poll.landing.js" ReplaceContent="TRUE" />
+    <File Path="scripts\moment.js" Url="scripts/moment.js" ReplaceContent="TRUE" />
+    <File Path="scripts\camljs.js" Url="scripts/camljs.js" ReplaceContent="TRUE" />    
+    <File Path="scripts\jquery-2.2.0.min.js" Url="scripts/jquery-2.2.0.min.js" ReplaceContent="TRUE" />
+    <File Path="scripts\knockout-3.4.0.js" Url="scripts/knockout-3.4.0.js" ReplaceContent="TRUE" />    
+    <File Path="scripts\jquery.fabric.min.js" Url="scripts/jquery.fabric.min.js" ReplaceContent="TRUE" />
+    <File Path="scripts\moment.min.js" Url="scripts/moment.min.js" ReplaceContent="TRUE" />
+    <File Path="scripts\peshos.fabricui.js" Url="scripts/peshos.fabricui.js" ReplaceContent="TRUE" />
+    <File Path="scripts\peshos.knockout.js" Url="scripts/peshos.knockout.js" ReplaceContent="TRUE" />
+  </Module>
+</Elements>

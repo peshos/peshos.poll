@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="Pages">
+    <File Path="pages\peshos.poll.html" Url="pages/peshos.poll.html" ReplaceContent="TRUE" />
+    <File Path="pages\peshos.poll.edit.html" Url="pages/peshos.poll.edit.html" ReplaceContent="TRUE" />
+    <File Path="pages\peshos.poll.landing.html" Url="pages/peshos.poll.landing.html" ReplaceContent="TRUE" />
+  </Module>
+</Elements>

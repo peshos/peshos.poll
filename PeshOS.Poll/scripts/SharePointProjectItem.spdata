@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectItem Type="Microsoft.VisualStudio.SharePoint.Module" DefaultFile="Elements.xml" SupportedTrustLevels="All" SupportedDeploymentScopes="Web, Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
+  <Files>
+    <ProjectItemFile Source="Elements.xml" Target="scripts\" Type="ElementManifest" />
+    <ProjectItemFile Source="jquery.colpick.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="jquery.jqplot.min.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="peshos.common.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="peshos.poll.resources.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="peshos.poll.configuration.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="peshos.poll.constants.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="peshos.poll.designer.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="peshos.poll.edit.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="peshos.poll.runtime.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="peshos.poll.sp.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="peshos.poll.common.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="peshos.poll.landing.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="moment.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="camljs.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="jquery-2.2.0.min.map" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="jquery-2.2.0.min.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="jquery-2.2.0.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="jquery-2.2.0.intellisense.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="knockout-3.4.0.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="knockout-3.4.0.debug.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="jquery.fabric.min.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="jquery.fabric.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="moment.min.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="moment-with-locales.min.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="moment-with-locales.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="peshos.fabricui.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="peshos.knockout.js" Target="scripts\" Type="ElementFile" />
+  </Files>
+</ProjectItem>

@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="/_layouts/15/MicrosoftAjax.js"></script>
+    <script type="text/javascript" src="/_layouts/15/sp.runtime.js"></script>
+    <script type="text/javascript" src="/_layouts/15/sp.js"></script>
+    <script type="text/javascript" src="/_layouts/15/sp.ui.controls.js"></script>
+    <script type="text/javascript" src="../scripts/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.fabric.min.js"></script>
+    <script type="text/javascript" src="../scripts/knockout-3.4.0.js"></script>        
+    <script type="text/javascript" src="../scripts/moment.min.js"></script>    
+    <script type="text/javascript" src="../scripts/peshos.common.js"></script>
+    <script type="text/javascript" src="../scripts/peshos.fabricui.js"></script>
+    <script type="text/javascript" src="../scripts/peshos.poll.resources.js"></script>
+    <script type="text/javascript" src="../scripts/peshos.poll.landing.js"></script>
+    <script type="text/javascript" src="../scripts/peshos.poll.constants.js"></script>    
+    <script type="text/javascript" src="../scripts/peshos.poll.sp.js"></script>
+
+    <link href="../css/fabric.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/fabric.components.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/peshos.css" rel="stylesheet" type="text/css" />
+
+    <script>
+        $(document).ready(function () {
+            PeshOS.Poll.Resources.translatePage();            
+            PeshOS.Poll.SP.addChromeControl();
+            PeshOS.FabricUI.setEvents();
+            PeshOS.Poll.Landing.configure();
+        });
+    </script>
+</head>
+<body>
+    <div class="ms-Overlay" id="overlay"></div>    
+    <div id="chromeControl"></div>
+    <div>
+        <div class="ms-Callout ms-Callout--close" style="display:none;" id="alertReadingConfigurations">
+            <div class="ms-Callout-main">
+                <div class="ms-Callout-header">
+                    <p class="ms-Callout-title">
+                        <span localeid="Alert_Reading"></span>
+                    </p>
+                </div><button class="ms-Callout-close"><i class="ms-Icon ms-Icon--x"></i></button>
+                <div class="ms-Callout-inner">
+                    <div class="ms-Callout-content">
+                        <p class="ms-Callout-subText">
+                            <span localeid="Alert_ReadingConfigurations"></span>
+                        </p>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+
+        <div class="ms-Callout ms-Callout--close" style="display:none;" id="alertItemsDeleted">
+            <div class="ms-Callout-main">
+                <div class="ms-Callout-header">
+                    <p class="ms-Callout-title">
+                        <span localeid="Alert_Deleted"></span>
+                    </p>
+                </div><button class="ms-Callout-close"><i class="ms-Icon ms-Icon--x"></i></button>
+                <div class="ms-Callout-inner">
+                    <div class="ms-Callout-content">
+                        <p class="ms-Callout-subText">
+                            <span localeid="Alert_PollRemoved"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ms-Callout ms-Callout--close" style="display:none;" id="alertSPError">
+            <div class="ms-Callout-main">
+                <div class="ms-Callout-header">
+                    <p class="ms-Callout-title">
+                        <span localeid="Alert_Error"></span>
+                    </p>
+                </div><button class="ms-Callout-close"><i class="ms-Icon ms-Icon--x"></i></button>
+                <div class="ms-Callout-inner">
+                    <div class="ms-Callout-content">
+                        <p class="ms-Callout-subText">
+                            <span id="spError"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ms-Callout ms-Callout--close" style="display:none;" id="alertExportedFile">
+            <div class="ms-Callout-main">
+                <div class="ms-Callout-header">
+                    <p class="ms-Callout-title">
+                        <span localeid="Alert_FileExported"></span>
+                    </p>
+                </div><button class="ms-Callout-close"><i class="ms-Icon ms-Icon--x"></i></button>
+                <div class="ms-Callout-inner">
+                    <div class="ms-Callout-content">
+                        <p class="ms-Callout-subText">
+                            <span localeid="Alert_FileExportedMessage"></span>
+                            <div class="ms-Callout-actions">
+                                <a id="exportedFile" title="Exported votes"></a>
+                            </div>                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pollLanding" style="display:none;">
+            <button class="ms-Button ms-Button--hero" data-bind="click: $root.addPoll, visible: $root.canAddPoll"><span class="ms-Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span> <span class="ms-Button-label" localeid="Landing_NewPoll"></span> <span class="ms-Button-description" localeid="Landing_NewPoll_Description"></span></button>
+            <button class="ms-Button ms-Button--hero" data-bind="click: $root.viewExported"><span class="ms-Button-icon"><i class="ms-Icon ms-Icon--note"></i></span> <span class="ms-Button-label" localeid="Landing_ViewExports"></span> <span class="ms-Button-description" localeid="Landing_ViewExports_Description"></span></button>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <caption><h2 localeid="Landing_Polls" style="float:left;"></h2></caption>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th><span localeid="Landing_PollName"></span></th>
+                                    <th><span localeid="Landing_PollStart"></span></th>
+                                    <th><span localeid="Landing_PollEnd"></span></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: polls">
+                                <tr>
+                                    <td>
+                                        <span data-bind="text: id, visible: !$root.isItemEditing($data)"></span>
+                                    </td>
+                                    <td>
+                                        <span data-bind="text: pollname, visible: !$root.isItemEditing($data)"></span>
+                                        <input type="text" class="form-control" data-bind="value: pollname.editValue, visible: $root.isItemEditing($data)" />
+                                    </td>
+                                    <td>
+                                        <span data-bind="text: start, visible: !$root.isItemEditing($data)"></span>
+                                        <input type="text" class="form-control" data-date-format="DD MMM YYYY" data-bind="visible: $root.isItemEditing($data), value: start.editValue, attr: {id: startId }" />
+                                    </td>
+                                    <td>
+                                        <span data-bind="text: end, visible: !$root.isItemEditing($data)"></span>
+                                        <input type="text" class="form-control" data-date-format="DD MMM YYYY" data-bind="visible: $root.isItemEditing($data), value: end.editValue, attr: {id: endId }" />
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-info" type="button" data-bind="click: $root.editPoll.bind($root), visible: !$root.isItemEditing($data)"><span localeid="Buttons_Edit"></span></button>
+                                        <button class="btn btn-info" type="button" data-bind="click: $root.configurePoll.bind($root), visible: !$root.isItemEditing($data) && $root.isItemSaved($data)"><span localeid="Buttons_Configure"></span></button>
+                                        <button class="btn btn-info" type="button" data-bind="click: $root.exportPollData.bind($root), visible: !$root.isItemEditing($data) && $root.isItemSaved($data)"><span localeid="Buttons_Export"></span></button>                                        
+                                        <button class="btn btn-info" type="button" data-bind="click: $root.removePoll.bind($root), visible: !$root.isItemEditing($data)"><span localeid="Buttons_Delete"></span></button>
+                                        <button class="btn btn-info" type="button" data-bind="click: $root.applyPoll.bind($root), visible: $root.isItemEditing($data)"><span localeid="Buttons_Apply"></span></button>
+                                        <button class="btn btn-info" type="button" data-bind="click: $root.cancelEdit.bind($root), visible: $root.isItemEditing($data)"><span localeid="Buttons_Cancel"></span></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>     
+    </div>
+</body>
+</html>
