@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ListInstance Title="PollConfiguration" OnQuickLaunch="FALSE" TemplateType="10000" Url="Lists/PollConfiguration" Description="PeshOS Poll Configuration.">
+    <Data>
+      <Rows>
+        <Row>
+          <Field Name="PeshOSConfiguration">{"design":{"chartType":"pie","fill":true,"gridLines":true,"formatString":"%d","legend":"e","maxValue":100,"colors":["#4bb2c5","#eaa228","#c5b47f","#579575","#839557","#958c12","#953579","#4b5de4","#d8b83f","#ff5800","#0085cc","#c747a3","#cddf54","#FBD178","#26B4E3"]},"chartConfiguration":{"title": "My poll", "seriesColors":["#4bb2c5","#eaa228","#c5b47f","#579575","#839557","#958c12","#953579","#4b5de4","#d8b83f","#ff5800","#0085cc","#c747a3","#cddf54","#FBD178","#26B4E3"],"seriesDefaults":{"rendererOptions":{"showDataLabels":true,"dataLabels":"value","fill":true},"pointLabels":{"show":false}},"legend":{"show":true,"location":"e","preDraw":true},"axesDefaults":{},"grid":{}},"poll":{"name":"My poll","description":"This is my first poll","width":400,"height":400,"votebutton":"vote","voteonce":false,"resultsbutton":"results","disablevoting":false,"questions":[{"answerText":"Answer question 1","chartText":"Chart 1"},{"answerText":"Answer question 2","chartText":"Chart 2"}]}}</Field>
+          <Field Name="PeshOSName">My first poll</Field>
+          <Field Name="PeshOSStart">2010-01-01T01:00:00Z</Field>
+          <Field Name="PeshOSEnd">2020-01-01T01:00:00Z</Field>
+        </Row>
+      </Rows>
+    </Data>
+  </ListInstance>
+</Elements>

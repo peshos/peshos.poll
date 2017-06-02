@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ListInstance Title="PollVotes_1" OnQuickLaunch="FALSE" TemplateType="10001" Url="Lists/PollVotes_1" Description="PehsOS Poll Votes."></ListInstance>
+</Elements>

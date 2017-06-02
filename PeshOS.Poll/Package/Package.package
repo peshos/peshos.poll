@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="66bd0400-d166-43a8-99ce-a9d46b39ad9d" solutionId="66bd0400-d166-43a8-99ce-a9d46b39ad9d" resetWebServer="false" sharePointProductVersion="15.0" name="PeshOS.Poll" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="89836f36-72ea-4af4-9b3f-8550a00d5875" />
+  </features>
+</package>
