@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ClientWebPart Name="PeshOSPollClientWebPart" Title="peshos poll" Description="peshos poll client web part." DefaultWidth="300" DefaultHeight="200">
+    <Content Type="html" Src="~appWebUrl/pages/peshos.poll.html" />    
+  </ClientWebPart>
+</Elements>

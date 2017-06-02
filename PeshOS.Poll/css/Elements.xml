@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="css">
+    <File Path="css\fabric.min.css" Url="css/fabric.min.css" ReplaceContent="TRUE" />
+    <File Path="css\jquery.jqplot.css" Url="css/jquery.jqplot.css" ReplaceContent="TRUE" />
+    <File Path="css\jquery.colpick.css" Url="css/jquery.colpick.css" ReplaceContent="TRUE" />
+    <File Path="css\peshos.css" Url="css/peshos.css" ReplaceContent="TRUE" />
+  </Module>
+</Elements>
